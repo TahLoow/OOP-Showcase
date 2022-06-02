@@ -1,0 +1,28 @@
+S - Single Responsibility Principal
+Any class should have one abstract objective, e.g. opening a database cnx, fetching data from database,
+writing data, etc. I did this in my thesis work, where I had to generate data for a database. For each table with
+unique generation rules, I made one dedicated subclass. Single responsibility helps improve modularization.
+
+O - Open/Closed Principal
+Open for extension, closed for modification. Classes you make should be designed to be extended upon, rather than
+to be modified. I remember writing classes that would generate data, and I would hardcode inputs each time to get
+different outputs. This was a hassle, and exemplified the issue of modification. I refactored the classes to instead
+be constructed with a config object as input.
+
+L - Liskov's Substitution Principal
+Parent classes should be easily substituted with their child classes. This implies that child classes should contain
+every method and class variable that the parent class owns. Liskov's substitution principal enforces consistency among
+class inheritance, so that child classes do not strongly deviate from their parents' behavior.
+
+I - Interface Segregation Principal
+We would prefer many specialized interfaces to fewer generalized interfaces. Classes that use interfaces don't need
+to implement required function calls from within the interfaces.
+
+D - Dependency Inversion Principal
+High-level classes should not depend on low-level classes; both should depend on a mutual interface.
+Interfaces serve as an intermediary between low-level and high-level classes. The principal manifests in hierarchical,
+has-a scenarios. An example might be a Computer class and its USB, Ethernet, and Display port classes.
+Rather than have the computer have USB, Ethernet, and Display ports, it simply has generic Port interfaces. Each
+instance of USB, Ethernet, and Display port extends from the corresponding Port interface. Now, the Computer
+only calls methods from the Port interface, and does not require any details other than method input and output.
+This ties in very well with interface segregation and functionalized code.
